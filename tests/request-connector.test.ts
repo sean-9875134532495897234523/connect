@@ -58,23 +58,31 @@ function mockConnect() {
     }
 }
 
-function isHttpRequest(obj: any) {
-
-    if (obj === undefined || obj === null) {
-        return false;
-    }
-
-    const comparisonObject: HttpRequest = {
+function mockHttpRequest() : HttpRequest {
+    const req: HttpRequest = {
         method: HttpRequestMethod.GET,
         uri: new URL('https://smartdebit.co.uk'),
         accept: "",
         data: {}
     }
 
+    return req;
+}
+
+function isHttpRequest(obj: any) {
+
+    if (obj === undefined || obj === null) {
+        return false;
+    }
+
+    const comparisonObject = mockHttpRequest();
+
     const expectedKeys = Object.keys(comparisonObject);
 
     for (const key in expectedKeys) {
         if (!(expectedKeys[key] in obj)) {
+            return false;
+        } else if (typeof (comparisonObject as any)[expectedKeys[key]] !== typeof obj[expectedKeys[key]]) {
             return false;
         }
     }
