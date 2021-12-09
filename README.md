@@ -25,6 +25,13 @@ The functions in the connector relate to specific events. For example, in the re
 
 ### Validate locally
 
+(To Do - write some unit tests and other validation that can be run locally before uploading)
+
 ### Upload to platform
 
+Via UI or API. This should trigger validation on our side that can include load testing and memory usage tests.
+
 ### Publish
+
+Would make the changes 'live', should be possible to do per environment.
+
